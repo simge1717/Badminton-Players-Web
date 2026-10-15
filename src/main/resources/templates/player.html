@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Badminton Player Creator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f7f5;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background-color: white;
+            width: 450px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: #2c6e49;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #2c6e49;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1f5135;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .result h2 {
+            color: #2c6e49;
+            text-align: center;
+        }
+
+        .result p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏸 Badminton Player Creator</h1>
+
+    <form action="/create" method="post">
+
+        <label>Player Name:</label>
+        <input type="text" name="playerName" required>
+
+        <label>Skill Level:</label>
+        <select name="skillLevel">
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+        </select>
+
+        <label>Playing Style:</label>
+        <select name="playingStyle">
+            <option>Offensive</option>
+            <option>Defensive</option>
+            <option>All-Round</option>
+        </select>
+
+        <label>Speed (1-100):</label>
+        <input type="number" name="speed" min="1" max="100" required>
+
+        <label>Power (1-100):</label>
+        <input type="number" name="power" min="1" max="100" required>
+
+        <label>Favorite Shot:</label>
+        <select name="favoriteShot">
+            <option>Smash</option>
+            <option>Drop Shot</option>
+            <option>Clear</option>
+            <option>Drive</option>
+        </select>
+
+        <button type="submit">Create Player</button>
+
+    </form>
+
+
+    <div class="result" th:if="${playerName != null}">
+
+        <h2>🏸 Player Created!</h2>
+
+        <p><strong>Name:</strong>
+            <span th:text="${playerName}"></span>
+        </p>
+
+        <p><strong>Skill Level:</strong>
+            <span th:text="${skillLevel}"></span>
+        </p>
+
+        <p><strong>Playing Style:</strong>
+            <span th:text="${playingStyle}"></span>
+        </p>
+
+        <p><strong>Speed:</strong>
+            <span th:text="${speed}"></span>
+        </p>
+
+        <p><strong>Power:</strong>
+            <span th:text="${power}"></span>
+        </p>
+
+        <p><strong>Favorite Shot:</strong>
+            <span th:text="${favoriteShot}"></span>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
